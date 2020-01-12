@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.cockaildisplay.favorite.fragment.FavoriteFragment">
+    tools:context=".presentation.cocktaildisplay.favorite.fragment.FavoriteFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

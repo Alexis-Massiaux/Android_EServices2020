@@ -1,7 +1,5 @@
-package android.eservices.insidefridge.presentation.cockaildisplay.fridge.fragment;
+package android.eservices.insidefridge.presentation.cocktaildisplay.fridge.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;

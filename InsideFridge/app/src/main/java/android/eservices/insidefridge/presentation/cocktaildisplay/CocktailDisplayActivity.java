@@ -1,4 +1,4 @@
-package android.eservices.insidefridge;
+package android.eservices.insidefridge.presentation.cocktaildisplay;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,12 +7,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.eservices.insidefridge.presentation.cockaildisplay.favorite.fragment.FavoriteFragment;
-import android.eservices.insidefridge.presentation.cockaildisplay.fridge.fragment.FridgeFragment;
-import android.eservices.insidefridge.presentation.cockaildisplay.search.fragment.SearchFragment;
+import android.eservices.insidefridge.R;
+import android.eservices.insidefridge.presentation.cocktaildisplay.favorite.fragment.FavoriteFragment;
+import android.eservices.insidefridge.presentation.cocktaildisplay.fridge.fragment.FridgeFragment;
+import android.eservices.insidefridge.presentation.cocktaildisplay.search.fragment.SearchFragment;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class CocktailDisplayActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
 

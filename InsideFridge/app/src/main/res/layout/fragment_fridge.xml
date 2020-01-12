@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.cockaildisplay.fridge.fragment.FridgeFragment">
+    tools:context=".presentation.cocktaildisplay.fridge.fragment.FridgeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
