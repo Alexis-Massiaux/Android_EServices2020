@@ -113,7 +113,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
 
     @Override
     public void displayCocktails(List<CocktailItemViewModel> cocktailItemViewModelList) {
-
+        cocktailAdapter.bindViewModels(cocktailItemViewModelList);
     }
 
     private void setupRecyclerView() {

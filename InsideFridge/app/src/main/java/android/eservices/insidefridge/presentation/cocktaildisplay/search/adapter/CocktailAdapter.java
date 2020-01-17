@@ -45,6 +45,12 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         cocktailItemViewModelList = new ArrayList<>();
     }
 
+    public void bindViewModels(List<CocktailItemViewModel> cocktailItemViewModelList) {
+        this.cocktailItemViewModelList.clear();
+        this.cocktailItemViewModelList.addAll(cocktailItemViewModelList);
+        notifyDataSetChanged();
+    }
+
      // Permet de créer un ViewHolder à partir du layout xml représentant chaque ligne de la RecyclerView
     @NonNull
     @Override
