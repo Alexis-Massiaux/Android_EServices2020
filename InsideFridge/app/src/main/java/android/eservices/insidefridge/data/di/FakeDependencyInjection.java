@@ -19,7 +19,7 @@ public class FakeDependencyInjection {
 
     public static CocktailDisplayService getCocktailDisplayService() {
         if(cocktailDisplayService == null) {
-            //cocktailDisplayService =
+            cocktailDisplayService = getRetrofit().create(CocktailDisplayService.class);
         }
         return cocktailDisplayService;
     }
