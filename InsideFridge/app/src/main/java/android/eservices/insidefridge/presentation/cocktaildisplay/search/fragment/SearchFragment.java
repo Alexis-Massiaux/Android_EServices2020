@@ -10,26 +10,60 @@ import android.view.ViewGroup;
 
 import android.eservices.insidefridge.R;
 
-public class SearchFragment extends Fragment {
+import java.util.List;
+/**
+ * Fragment used to search an ingredient or a cocktail
+ */
+public class SearchFragment extends Fragment implements CocktailSearchContract.View {
+
+    private View rootView;
+    private RecyclerView recyclerView;
+    private CocktailSearchContract.Presenter presenter;
+    private CocktailAdapter cocktailAdapter;
 
     public SearchFragment() {
         // Required empty public constructor
     }
 
+    public static SearchFragment newInstance() {
+        return new SearchFragment();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setupRecyclerView();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        super.onCreateView(inflater, container, savedInstanceState);
+        rootView = inflater.inflate(R.layout.fragment_search, container, false);
+
+        return rootView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
     }
 
     @Override
     public void onStart() {
         super.onStart();
     }
+    private void setupRecyclerView() {
+        recyclerView = rootView.findViewById(R.id.recycler_view);
+        cocktailAdapter = new CocktailAdapter();
+        recyclerView.setAdapter(cocktailAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+
 }

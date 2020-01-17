@@ -9,14 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Adapter -> Faire le lien entre la vue RecyclerView & le contrôleur
  */
 public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.CocktailViewHolder> {
-
-    private List<CocktailItemViewModel> cocktailItemViewModelList;
 
     /**
      * ViewHolder -> représentation de l'objet désérialisé du layout item_cocktail
@@ -40,6 +39,12 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         }
     }
 
+    private List<CocktailItemViewModel> cocktailItemViewModelList;
+
+    public CocktailAdapter() {
+        cocktailItemViewModelList = new ArrayList<>();
+    }
+
      // Permet de créer un ViewHolder à partir du layout xml représentant chaque ligne de la RecyclerView
     @NonNull
     @Override
@@ -52,7 +57,7 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull CocktailViewHolder holder, int position) {
+    public void onBindViewHolder(CocktailViewHolder holder, int position) {
         holder.bind(cocktailItemViewModelList.get(position));
     }
 
