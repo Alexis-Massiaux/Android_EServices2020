@@ -12,7 +12,7 @@ public class CocktailToViewModelMapper {
         CocktailItemViewModel cocktailItemViewModel = new CocktailItemViewModel();
 
         cocktailItemViewModel.setId(cocktail.getId());
-        cocktailItemViewModel.setName(cocktail.getCocktailInfo().getName());
+        cocktailItemViewModel.setName(cocktail.getName());
 
         return cocktailItemViewModel;
     }
