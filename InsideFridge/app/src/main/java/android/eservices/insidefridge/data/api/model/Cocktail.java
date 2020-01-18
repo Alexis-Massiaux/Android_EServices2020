@@ -5,9 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Cocktail {
 
-   // private String id;
-    private CocktailInfo cocktailInfo;
-
     @SerializedName("idIngredient")
     @Expose
     private String idIngredient;
@@ -20,11 +17,6 @@ public class Cocktail {
     }
 
     public String getId() { return idIngredient; }
-
-
-    public CocktailInfo getCocktailInfo() {
-        return cocktailInfo;
-    }
 
     public String toString() {
         return "Mon cocktail : "+idIngredient+ " _ "+ strIngredient;
