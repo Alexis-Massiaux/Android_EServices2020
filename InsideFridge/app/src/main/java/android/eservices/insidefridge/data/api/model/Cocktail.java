@@ -5,21 +5,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class Cocktail {
 
-    @SerializedName("idIngredient")
+    @SerializedName("idDrink")
     @Expose
     private String idIngredient;
-    @SerializedName("strIngredient")
+    @SerializedName("strDrink")
     @Expose
-    private String strIngredient;
-
-    public String getName() {
-        return strIngredient;
-    }
+    private String name;
 
     public String getId() { return idIngredient; }
 
-    public String toString() {
-        return "Mon cocktail : "+idIngredient+ " _ "+ strIngredient;
+    public String getName() {
+        return name;
     }
 
+    public String toString() {
+        return "Mon cocktail : "+getId()+ " / "+ getName();
+    }
 }

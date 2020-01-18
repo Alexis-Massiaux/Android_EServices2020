@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 public interface CocktailDisplayService {
 
     @Headers({"x-rapidapi-host: the-cocktail-db.p.rapidapi.com", "x-rapidapi-key: 307a2dfe3cmshab5301ebabb5427p126057jsn155145a71bdb"})
-    @GET("search.php")
+    @GET("filter.php")
     Single<CocktailSearchResponse> getCocktails(@Query("i") String keywords, @Query("key") String apiKey);
 }

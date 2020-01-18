@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CocktailSearchResponse {
 
-    @SerializedName("ingredients")
+    @SerializedName("drinks")
     List<Cocktail> cocktailList;
 
     public List<Cocktail> getCocktailList() { return this.cocktailList; }
