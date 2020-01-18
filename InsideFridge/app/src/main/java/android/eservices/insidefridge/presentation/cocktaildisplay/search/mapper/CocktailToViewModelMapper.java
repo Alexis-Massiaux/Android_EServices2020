@@ -17,6 +17,13 @@ public class CocktailToViewModelMapper {
         return cocktailItemViewModel;
     }
 
+    public CocktailItemViewModel emptySearch() {
+        CocktailItemViewModel cocktailItemViewModel = new CocktailItemViewModel();
+        cocktailItemViewModel.setName("Aucun resultat");
+
+        return cocktailItemViewModel;
+    }
+
     public List<CocktailItemViewModel> map(List<Cocktail> cocktailList) {
         List<CocktailItemViewModel> result = new ArrayList<>();
 
@@ -25,5 +32,4 @@ public class CocktailToViewModelMapper {
 
         return result;
     }
-
 }

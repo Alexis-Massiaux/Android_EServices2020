@@ -45,6 +45,16 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         cocktailItemViewModelList = new ArrayList<>();
     }
 
+    /**
+     * Utiliser pour indiquer à l'utilisateur que la recherche n'a renvoyée aucun résultat
+     * @param cocktailItemViewModel - On se sert de l'attribut name de cet objet pour transmettre le message
+     */
+    public void bindViewModel(CocktailItemViewModel cocktailItemViewModel) {
+        this.cocktailItemViewModelList.clear();
+        this.cocktailItemViewModelList.add(cocktailItemViewModel);
+        notifyDataSetChanged();
+    }
+
     public void bindViewModels(List<CocktailItemViewModel> cocktailItemViewModelList) {
         this.cocktailItemViewModelList.clear();
         this.cocktailItemViewModelList.addAll(cocktailItemViewModelList);

@@ -35,7 +35,10 @@ public class CocktailSearchPresenter implements CocktailSearchContract.Presenter
 
                     @Override
                     public void onSuccess(CocktailSearchResponse cocktailSearchResponse) {
-                        view.displayCocktails(cocktailToViewModelMapper.map(cocktailSearchResponse.getCocktailList()));
+                        if(cocktailSearchResponse.getCocktailList() != null)
+                            view.displayCocktails(cocktailToViewModelMapper.map(cocktailSearchResponse.getCocktailList()));
+                        else
+                            view.displayEmptySearch(cocktailToViewModelMapper.emptySearch());
                     }
 
                     @Override

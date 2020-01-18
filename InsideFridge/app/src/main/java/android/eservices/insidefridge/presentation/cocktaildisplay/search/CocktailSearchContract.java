@@ -8,6 +8,8 @@ public interface CocktailSearchContract {
 
     interface View {
         void displayCocktails(List<CocktailItemViewModel> cocktailItemViewModelList);
+
+        void displayEmptySearch(CocktailItemViewModel cocktailItemEmpty);
     }
 
     interface Presenter {
