@@ -1,9 +1,11 @@
 package android.eservices.insidefridge.presentation.cocktaildisplay.search.fragment;
 
+import android.eservices.insidefridge.data.di.FakeDependencyInjection;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchContract;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchPresenter;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailAdapter;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailItemViewModel;
+import android.eservices.insidefridge.presentation.cocktaildisplay.search.mapper.CocktailToViewModelMapper;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -48,6 +50,9 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
         setupSearchView();
+
+        presenter = new CocktailSearchPresenter(FakeDependencyInjection.getCocktailDisplayRepository(),new CocktailToViewModelMapper());
+        presenter.attachView(this);
     }
 
     @Override
