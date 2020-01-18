@@ -4,6 +4,7 @@ public class CocktailItemViewModel {
 
     private String id;
     private String name;
+    private String imageURL;
 
     public String getId() {
         return id;
@@ -19,6 +20,14 @@ public class CocktailItemViewModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
 

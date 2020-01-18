@@ -4,10 +4,14 @@ import android.eservices.insidefridge.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,7 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
     public static class CocktailViewHolder extends RecyclerView.ViewHolder {
 
         private CocktailItemViewModel cocktailItemViewModel;
-
+        private ImageView iconImageView;
         private TextView titleTextView;
         private View view;
 
@@ -31,11 +35,18 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
             super(view);
             this.view = view;
             titleTextView = view.findViewById(R.id.cocktail_name_textview);
+            iconImageView = view.findViewById(R.id.cocktail_icon_imageview);
         }
 
         public void bind(CocktailItemViewModel cocktailItemViewModel) {
             this.cocktailItemViewModel = cocktailItemViewModel;
             titleTextView.setText(this.cocktailItemViewModel.getName());
+            Glide.with(view)
+                    .load(cocktailItemViewModel.getImageURL())
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .circleCrop()
+                    .into(iconImageView);
         }
     }
 

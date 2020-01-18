@@ -126,8 +126,6 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         cocktailAdapter.bindViewModel(cocktailItemViewModel);
     }
 
-
-
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         cocktailAdapter = new CocktailAdapter();
