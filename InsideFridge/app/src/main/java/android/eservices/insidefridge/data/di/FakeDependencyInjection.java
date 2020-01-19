@@ -7,6 +7,7 @@ import android.eservices.insidefridge.data.db.CocktailDataBase;
 import android.eservices.insidefridge.data.repository.CocktailDisplayDataRepository;
 import android.eservices.insidefridge.data.repository.CocktailDisplayRepository;
 import android.eservices.insidefridge.data.repository.local.CocktailLocalDataSource;
+import android.eservices.insidefridge.data.repository.mapper.CocktailToCocktailEntityMapper;
 import android.eservices.insidefridge.data.repository.remote.CocktailDisplayRemoteDataSource;
 
 import androidx.room.Room;
@@ -27,15 +28,16 @@ public class FakeDependencyInjection {
     private static Context applicationContext;
     private static CocktailDataBase cocktailDataBase;
     private static CocktailDisplayService cocktailDisplayService;
-    private static CocktailLocalDataSource cocktailLocalDataSource;
     private static CocktailDisplayRepository cocktailDisplayRepository;
 
 
-    public static CocktailDisplayRepository getCocktailDisplayRepository() {
+    public static CocktailDisplayRepository getCocktailDisplayRepository(Context context) {
         if(cocktailDisplayRepository == null)
             cocktailDisplayRepository = new CocktailDisplayDataRepository(
                     new CocktailDisplayRemoteDataSource(getCocktailDisplayService()),
-                    new CocktailLocalDataSource(getCocktailDatabase())
+                    new CocktailToCocktailEntityMapper(),
+                    new CocktailLocalDataSource(getCocktailDatabase(context))
+
             );
         return cocktailDisplayRepository;
     }
@@ -76,9 +78,9 @@ public class FakeDependencyInjection {
         applicationContext = context;
     }
 
-    public static CocktailDataBase getCocktailDatabase() {
+    public static CocktailDataBase getCocktailDatabase(Context context) {
         if (cocktailDataBase == null) {
-            cocktailDataBase = Room.databaseBuilder(applicationContext,
+            cocktailDataBase = Room.databaseBuilder(context,
                     CocktailDataBase.class, "cocktail-database").build();
         }
         return cocktailDataBase;

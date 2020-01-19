@@ -54,16 +54,6 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setupRecyclerView();
-        setupSearchView();
-
-        presenter = new CocktailSearchPresenter(FakeDependencyInjection.getCocktailDisplayRepository(),new CocktailToViewModelMapper());
-        presenter.attachView(this);
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupDetailsButton();
@@ -77,6 +67,16 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         gridListButton = rootView.findViewById(R.id.button);
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setupRecyclerView();
+        setupSearchView();
+
+        presenter = new CocktailSearchPresenter(FakeDependencyInjection.getCocktailDisplayRepository(getContext()),new CocktailToViewModelMapper());
+        presenter.attachView(this);
     }
 
     @Override
@@ -148,7 +148,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
 
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
-        cocktailAdapter = new CocktailAdapter();
+        cocktailAdapter = new CocktailAdapter(this);
         recyclerView.setAdapter(cocktailAdapter);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
