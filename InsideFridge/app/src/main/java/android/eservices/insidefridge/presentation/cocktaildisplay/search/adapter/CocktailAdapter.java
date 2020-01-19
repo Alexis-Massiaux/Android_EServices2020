@@ -27,6 +27,7 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
      */
     public static class CocktailViewHolder extends RecyclerView.ViewHolder {
 
+        private CocktailActionInterface cocktailActionInterface;
         private CocktailItemViewModel cocktailItemViewModel;
         private ImageView iconImageView;
         private TextView titleTextView;
@@ -34,13 +35,14 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         private Button detailsButton;
         private View view;
 
-        public CocktailViewHolder(View view) {
+        public CocktailViewHolder(View view, final CocktailActionInterface cocktailActionInterface) {
             super(view);
             this.view = view;
             titleTextView = view.findViewById(R.id.cocktail_name_textview);
             iconImageView = view.findViewById(R.id.cocktail_icon_imageview);
             favoriteButton = view.findViewById(R.id.favorite_button);
             detailsButton = view.findViewById(R.id.details_button);
+            this.cocktailActionInterface = cocktailActionInterface;
             setupListeners();
         }
 
@@ -61,6 +63,7 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
                 @Override
                 public void onClick(View view) {
                     System.out.println("Tron favorite click button");
+                    cocktailActionInterface.setOnFavorite(cocktailItemViewModel.getId());
                 }
             });
 
@@ -73,10 +76,12 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         }
     }
 
+    private CocktailActionInterface cocktailActionInterface;
     private List<CocktailItemViewModel> cocktailItemViewModelList;
 
-    public CocktailAdapter() {
+    public CocktailAdapter(CocktailActionInterface cocktailActionInterface) {
         cocktailItemViewModelList = new ArrayList<>();
+        this.cocktailActionInterface = cocktailActionInterface;
     }
 
     /**
@@ -101,7 +106,7 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
     public CocktailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cocktail, parent, false);
-        CocktailViewHolder cocktailViewHolder = new CocktailViewHolder(v);
+        CocktailViewHolder cocktailViewHolder = new CocktailViewHolder(v, cocktailActionInterface);
         return cocktailViewHolder;
     }
 

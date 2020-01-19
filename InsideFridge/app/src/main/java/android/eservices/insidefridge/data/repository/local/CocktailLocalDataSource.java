@@ -21,12 +21,12 @@ public class CocktailLocalDataSource {
         return cocktailDataBase.cocktailDao().loadFavorites();
     }
 
-    public Completable addBookToFavorites(CocktailEntity cocktailkEntity) {
-        return cocktailDataBase.cocktailDao().addBookToFavorites(cocktailkEntity);
+    public Completable addCocktailToFavorites(CocktailEntity cocktailkEntity) {
+        return cocktailDataBase.cocktailDao().addCocktailToFavorites(cocktailkEntity);
     }
 
-    public Completable deleteBookFromFavorites(String id) {
-        return cocktailDataBase.cocktailDao().deleteBookFromFavorites(id);
+    public Completable removeCocktailsFromFavorites(String id) {
+        return cocktailDataBase.cocktailDao().deleteCocktailFromFavorites(id);
     }
 
     public Single<List<String>> getFavoriteIdList() {

@@ -19,10 +19,10 @@ public interface CocktailDao {
     Flowable<List<CocktailEntity>> loadFavorites();
 
     @Insert
-    public Completable addBookToFavorites(CocktailEntity cocktailkEntity);
+    public Completable addCocktailToFavorites(CocktailEntity cocktailkEntity);
 
     @Query("DELETE FROM cocktailentity WHERE id = :id")
-    public Completable deleteBookFromFavorites(String id);
+    public Completable deleteCocktailFromFavorites(String id);
 
     @Query("SELECT id from cocktailentity")
     Single<List<String>> getFavoriteIdList();

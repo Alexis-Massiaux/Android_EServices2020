@@ -4,6 +4,7 @@ import android.eservices.insidefridge.data.di.FakeDependencyInjection;
 import android.eservices.insidefridge.presentation.cocktaildisplay.fridge.fragment.FridgeFragment;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchContract;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchPresenter;
+import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailActionInterface;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailAdapter;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailItemViewModel;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.mapper.CocktailToViewModelMapper;
@@ -32,7 +33,7 @@ import java.util.TimerTask;
 /**
  * Fragment used to search an ingredient or a cocktail
  */
-public class SearchFragment extends Fragment implements CocktailSearchContract.View {
+public class SearchFragment extends Fragment implements CocktailSearchContract.View, CocktailActionInterface {
 
     public static final String TAB_NAME = "Search";
     private View rootView;
@@ -135,6 +136,16 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         cocktailAdapter.bindViewModel(cocktailItemViewModel);
     }
 
+    @Override
+    public void onCocktailAddedToFavorites() {
+        //Do nothing here
+    }
+
+    @Override
+    public void onCocktailRemovedToFavorites() {
+        //Do nothing here
+    }
+
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         cocktailAdapter = new CocktailAdapter();
@@ -157,7 +168,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
 
     private void setupDetailsButton() {
         View search = getLayoutInflater().inflate(R.layout.item_cocktail, null);
-        detailsCocktailsButton = search.findViewById(R.id.result_button);
+        detailsCocktailsButton = search.findViewById(R.id.details_button);
         detailsCocktailsButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -173,5 +184,10 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         transaction.replace(R.id.fragment_container, newFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void setOnFavorite(String cocktailID) {
+        presenter.addCocktailToFavorite(cocktailID);
     }
 }

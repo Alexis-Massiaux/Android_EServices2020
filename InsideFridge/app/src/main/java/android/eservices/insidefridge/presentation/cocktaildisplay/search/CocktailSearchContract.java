@@ -10,6 +10,11 @@ public interface CocktailSearchContract {
         void displayCocktails(List<CocktailItemViewModel> cocktailItemViewModelList);
 
         void displayEmptySearch(CocktailItemViewModel cocktailItemEmpty);
+
+        void onCocktailAddedToFavorites();
+
+        void onCocktailRemovedToFavorites();
+
     }
 
     interface Presenter {
@@ -20,5 +25,9 @@ public interface CocktailSearchContract {
         void detachView();
 
         void searchCocktails(String keywords);
+
+        void addCocktailToFavorite(String cocktailID);
+
+        void removeCocktailToFavorite(String cocktailID);
     }
 }

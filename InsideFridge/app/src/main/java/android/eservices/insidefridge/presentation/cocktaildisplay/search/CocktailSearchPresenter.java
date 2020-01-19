@@ -49,6 +49,42 @@ public class CocktailSearchPresenter implements CocktailSearchContract.Presenter
     }
 
     @Override
+    public void addCocktailToFavorite(String cocktailID) {
+        compositeDisposable.add(cocktailDisplayRepository.addCocktailToFavorites(cocktailID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        view.onCocktailAddedToFavorites();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+    }
+
+    @Override
+    public void removeCocktailToFavorite(String cocktailID) {
+        compositeDisposable.add(cocktailDisplayRepository.removeCocktailFromFavorites(cocktailID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        view.onCocktailRemovedToFavorites();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+    }
+
+    @Override
     public void attachView(CocktailSearchContract.View view) {
         this.view = view;
     }
