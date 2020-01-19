@@ -6,6 +6,7 @@ import android.eservices.insidefridge.data.api.model.CocktailSearchResponse;
 import android.eservices.insidefridge.data.db.CocktailDataBase;
 import android.eservices.insidefridge.data.repository.CocktailDisplayDataRepository;
 import android.eservices.insidefridge.data.repository.CocktailDisplayRepository;
+import android.eservices.insidefridge.data.repository.local.CocktailLocalDataSource;
 import android.eservices.insidefridge.data.repository.remote.CocktailDisplayRemoteDataSource;
 
 import androidx.room.Room;
@@ -26,15 +27,16 @@ public class FakeDependencyInjection {
     private static Context applicationContext;
     private static CocktailDataBase cocktailDataBase;
     private static CocktailDisplayService cocktailDisplayService;
+    private static CocktailLocalDataSource cocktailLocalDataSource;
     private static CocktailDisplayRepository cocktailDisplayRepository;
 
 
     public static CocktailDisplayRepository getCocktailDisplayRepository() {
         if(cocktailDisplayRepository == null)
-            cocktailDisplayRepository = new CocktailDisplayDataRepository
-                    (new CocktailDisplayRemoteDataSource(getCocktailDisplayService())
-                    //new BookDisplayLocalDataSource(getBookDatabase())
-                    );
+            cocktailDisplayRepository = new CocktailDisplayDataRepository(
+                    new CocktailDisplayRemoteDataSource(getCocktailDisplayService()),
+                    new CocktailLocalDataSource(getCocktailDatabase())
+            );
         return cocktailDisplayRepository;
     }
 
