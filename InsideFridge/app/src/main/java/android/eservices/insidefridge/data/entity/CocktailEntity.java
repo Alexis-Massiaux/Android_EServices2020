@@ -10,7 +10,7 @@ public class CocktailEntity  {
     @NonNull
     @PrimaryKey
     private String id;
-    private String title;
+    private String name;
     private String imageURL;
     private boolean isFavorite;
 
@@ -23,12 +23,12 @@ public class CocktailEntity  {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImageURL() {

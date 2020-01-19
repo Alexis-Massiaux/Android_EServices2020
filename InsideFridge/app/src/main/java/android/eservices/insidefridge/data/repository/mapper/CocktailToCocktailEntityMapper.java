@@ -8,7 +8,7 @@ public class CocktailToCocktailEntityMapper {
     public CocktailEntity map(Cocktail cocktail) {
         CocktailEntity cocktailEntity = new CocktailEntity();
         cocktailEntity.setId(cocktail.getId());
-        cocktailEntity.setTitle(cocktail.getName());
+        cocktailEntity.setName(cocktail.getName());
         cocktailEntity.setImageURL(cocktail.getImageURL());
 
         return cocktailEntity;

@@ -7,8 +7,11 @@ import android.eservices.insidefridge.data.repository.local.CocktailLocalDataSou
 import android.eservices.insidefridge.data.repository.mapper.CocktailToCocktailEntityMapper;
 import android.eservices.insidefridge.data.repository.remote.CocktailDisplayRemoteDataSource;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
@@ -28,6 +31,11 @@ public class CocktailDisplayDataRepository implements CocktailDisplayRepository{
     public Single<CocktailSearchResponse> getCocktailSearchResponse(String keywords) {
 
         return cocktailDisplayRemoteDataSource.getCocktailSearchResponse(keywords);
+    }
+
+    @Override
+    public Flowable<List<CocktailEntity>> getFavorites() {
+        return cocktailLocalDataSource.loadFavorites();
     }
 
     @Override
