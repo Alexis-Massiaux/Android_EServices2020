@@ -7,6 +7,10 @@ import java.util.List;
 public interface CocktailSearchContract {
 
     interface View {
+        /**
+         * Permet l'affichage des cocktails retournés par l'API
+         * @param cocktailItemViewModelList
+         */
         void displayCocktails(List<CocktailItemViewModel> cocktailItemViewModelList);
 
         void displayEmptySearch(CocktailItemViewModel cocktailItemEmpty);
@@ -24,6 +28,10 @@ public interface CocktailSearchContract {
 
         void detachView();
 
+        /**
+         * Permet la récupération de cocktails selon un ingrédient
+         * @param keywords - l'ingrédient
+         */
         void searchCocktails(String keywords);
 
         void addCocktailToFavorite(String cocktailID);

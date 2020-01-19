@@ -146,6 +146,10 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         //Do nothing here
     }
 
+    /**
+     * Initialisation d'un recycler view où on lui partage un adapter
+     * Donne l'action au bouton qui permet de passer d'une vue liste à une vue grille
+     */
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         cocktailAdapter = new CocktailAdapter(this);
@@ -166,6 +170,10 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         });
     }
 
+    /**
+     * Donne l'action au bouton qui devrait afficher une nouvelle vue pour le détails d'un coktail
+     * (à supprimer, il est dans l'adapter / trouvé un moyen d'effectuer le replaceFragment depuis l'adapter)
+     */
     private void setupDetailsButton() {
         View search = getLayoutInflater().inflate(R.layout.item_cocktail, null);
         detailsCocktailsButton = search.findViewById(R.id.details_button);
