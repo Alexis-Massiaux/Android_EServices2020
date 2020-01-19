@@ -3,9 +3,12 @@ package android.eservices.insidefridge.data.di;
 import android.content.Context;
 import android.eservices.insidefridge.data.api.CocktailDisplayService;
 import android.eservices.insidefridge.data.api.model.CocktailSearchResponse;
+import android.eservices.insidefridge.data.db.CocktailDataBase;
 import android.eservices.insidefridge.data.repository.CocktailDisplayDataRepository;
 import android.eservices.insidefridge.data.repository.CocktailDisplayRepository;
 import android.eservices.insidefridge.data.repository.remote.CocktailDisplayRemoteDataSource;
+
+import androidx.room.Room;
 
 import com.google.gson.Gson;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -22,6 +25,7 @@ public class FakeDependencyInjection {
     private static Gson gson;
     private static Retrofit retrofit;
     private static Context applicationContext;
+    private static CocktailDataBase cocktailDataBase;
     private static CocktailDisplayService cocktailDisplayService;
     private static CocktailDisplayRepository cocktailDisplayRepository;
 
@@ -65,6 +69,14 @@ public class FakeDependencyInjection {
 
     public static void setContext(Context context) {
         applicationContext = context;
+    }
+
+    public static CocktailDataBase getBookDatabase() {
+        if (cocktailDataBase == null) {
+            cocktailDataBase = Room.databaseBuilder(applicationContext,
+                    CocktailDataBase.class, "book-database").build();
+        }
+        return cocktailDataBase;
     }
 
 }
