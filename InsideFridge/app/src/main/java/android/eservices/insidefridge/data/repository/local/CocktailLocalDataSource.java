@@ -17,18 +17,36 @@ public class CocktailLocalDataSource {
         this.cocktailDataBase = cocktailDataBase;
     }
 
+    /**
+     * Récupére tous les cocktails en favoris
+     * @return - une liste de cocktails
+     */
     public Flowable<List<CocktailEntity>> loadFavorites(){
         return cocktailDataBase.cocktailDao().loadFavorites();
     }
 
+    /**
+     * Enregistre un cocktail placer en favoris
+     * @param cocktailkEntity - le cocktail
+     * @return - une réponse de l'enregistrement
+     */
     public Completable addCocktailToFavorites(CocktailEntity cocktailkEntity) {
         return cocktailDataBase.cocktailDao().addCocktailToFavorites(cocktailkEntity);
     }
 
+    /**
+     * Supprime un cocktail retirer de la liste des favoris
+     * @param id - id du cocktail supprimer
+     * @return - une réponse de l'efffacement
+     */
     public Completable removeCocktailsFromFavorites(String id) {
         return cocktailDataBase.cocktailDao().deleteCocktailFromFavorites(id);
     }
 
+    /**
+     * Retourne une liste d'id des cocktails enregistrés localement
+     * @return - une liste d'id
+     */
     public Single<List<String>> getFavoriteIdList() {
         return cocktailDataBase.cocktailDao().getFavoriteIdList();
     }
