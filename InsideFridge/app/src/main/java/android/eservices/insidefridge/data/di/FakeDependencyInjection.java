@@ -13,7 +13,6 @@ import androidx.room.Room;
 import com.google.gson.Gson;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
-import io.reactivex.Single;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -32,9 +31,13 @@ public class FakeDependencyInjection {
 
     public static CocktailDisplayRepository getCocktailDisplayRepository() {
         if(cocktailDisplayRepository == null)
-            cocktailDisplayRepository = new CocktailDisplayDataRepository(new CocktailDisplayRemoteDataSource(getCocktailDisplayService()));
+            cocktailDisplayRepository = new CocktailDisplayDataRepository
+                    (new CocktailDisplayRemoteDataSource(getCocktailDisplayService())
+                    //new BookDisplayLocalDataSource(getBookDatabase())
+                    );
         return cocktailDisplayRepository;
     }
+
     public static CocktailDisplayService getCocktailDisplayService() {
         if(cocktailDisplayService == null) {
             cocktailDisplayService = getRetrofit().create(CocktailDisplayService.class);
@@ -71,10 +74,10 @@ public class FakeDependencyInjection {
         applicationContext = context;
     }
 
-    public static CocktailDataBase getBookDatabase() {
+    public static CocktailDataBase getCocktailDatabase() {
         if (cocktailDataBase == null) {
             cocktailDataBase = Room.databaseBuilder(applicationContext,
-                    CocktailDataBase.class, "book-database").build();
+                    CocktailDataBase.class, "cocktail-database").build();
         }
         return cocktailDataBase;
     }

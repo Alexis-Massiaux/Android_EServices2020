@@ -4,6 +4,7 @@ import android.eservices.insidefridge.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,8 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         private CocktailItemViewModel cocktailItemViewModel;
         private ImageView iconImageView;
         private TextView titleTextView;
+        private Button favoriteButton;
+        private Button detailsButton;
         private View view;
 
         public CocktailViewHolder(View view) {
@@ -36,6 +39,9 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
             this.view = view;
             titleTextView = view.findViewById(R.id.cocktail_name_textview);
             iconImageView = view.findViewById(R.id.cocktail_icon_imageview);
+            favoriteButton = view.findViewById(R.id.favorite_button);
+            detailsButton = view.findViewById(R.id.details_button);
+            setupListeners();
         }
 
         public void bind(CocktailItemViewModel cocktailItemViewModel) {
@@ -47,6 +53,23 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .circleCrop()
                     .into(iconImageView);
+        }
+
+        public void setupListeners() {
+            favoriteButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Tron favorite click button");
+                }
+            });
+
+            detailsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Tron details click button");
+                }
+            });
         }
     }
 

@@ -5,7 +5,7 @@ import android.eservices.insidefridge.data.repository.remote.CocktailDisplayRemo
 
 import io.reactivex.Single;
 
-public class CocktailDisplayDataRepository implements  CocktailDisplayRepository{
+public class CocktailDisplayDataRepository implements CocktailDisplayRepository{
 
     private CocktailDisplayRemoteDataSource cocktailDisplayRemoteDataSource;
 

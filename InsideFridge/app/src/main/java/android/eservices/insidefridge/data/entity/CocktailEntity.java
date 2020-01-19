@@ -12,6 +12,7 @@ public class CocktailEntity  {
     private String id;
     private String title;
     private String imageURL;
+    private boolean isFavorite;
 
     @NonNull
     public String getId() {
@@ -36,5 +37,13 @@ public class CocktailEntity  {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 }

@@ -18,14 +18,20 @@
         android:layout_margin="10dp">
 
         <Button
-            android:id="@+id/result_button"
+            android:id="@+id/details_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary_dark"
-            android:text="test"
+            android:background="@android:color/transparent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="on" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/favorite_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@android:drawable/btn_star"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/cocktail_icon_imageview"
