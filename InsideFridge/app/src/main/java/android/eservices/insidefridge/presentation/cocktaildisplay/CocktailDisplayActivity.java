@@ -12,6 +12,7 @@ import android.eservices.insidefridge.presentation.cocktaildisplay.favorite.frag
 import android.eservices.insidefridge.presentation.cocktaildisplay.fridge.fragment.FridgeFragment;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.fragment.SearchFragment;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 public class CocktailDisplayActivity extends AppCompatActivity {
 
@@ -58,9 +59,12 @@ public class CocktailDisplayActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            String tabTitles[] = new String[]{"Favoris", "Recherche", "Frigo"};
-
-            return tabTitles[position];
+            if(position == 0)
+                return FavoriteFragment.TAB_NAME;
+            else if(position == 1)
+                return SearchFragment.TAB_NAME;
+            else
+                return FridgeFragment.TAB_NAME;
         }
 
         @Override

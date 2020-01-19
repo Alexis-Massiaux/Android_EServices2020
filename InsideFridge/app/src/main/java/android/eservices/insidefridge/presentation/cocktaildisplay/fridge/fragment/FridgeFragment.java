@@ -12,6 +12,8 @@ import android.eservices.insidefridge.R;
 
 public class FridgeFragment extends Fragment {
 
+    public static final String TAB_NAME = "Fridge";
+
     public FridgeFragment() {
         // Required empty public constructor
     }

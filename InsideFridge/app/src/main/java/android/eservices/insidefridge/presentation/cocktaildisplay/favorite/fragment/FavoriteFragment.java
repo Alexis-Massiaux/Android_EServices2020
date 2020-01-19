@@ -12,6 +12,8 @@ import android.eservices.insidefridge.R;
 
 public class FavoriteFragment extends Fragment {
 
+    public static final String TAB_NAME = "Favorites";
+
     public FavoriteFragment() {
         // Required empty public constructor
     }
