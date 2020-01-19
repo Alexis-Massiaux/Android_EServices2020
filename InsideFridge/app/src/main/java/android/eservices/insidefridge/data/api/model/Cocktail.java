@@ -7,7 +7,7 @@ public class Cocktail {
 
     @SerializedName("idDrink")
     @Expose
-    private String idIngredient;
+    private String id;
     @SerializedName("strDrink")
     @Expose
     private String name;
@@ -15,7 +15,7 @@ public class Cocktail {
     @Expose
     private String imageURL;
 
-    public String getId() { return idIngredient; }
+    public String getId() { return id; }
 
     public String getName() {
         return name;
