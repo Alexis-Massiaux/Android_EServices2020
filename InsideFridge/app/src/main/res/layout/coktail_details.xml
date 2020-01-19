@@ -17,32 +17,22 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp">
 
-        <Button
-            android:id="@+id/result_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary_dark"
-            android:text="test"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="on" />
-
         <ImageView
-            android:id="@+id/cocktail_icon_imageview"
+            android:id="@+id/cocktail_details_icon_imageview"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/cocktail_name_textview"
+            android:id="@+id/cocktail_details_name_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/cocktail_icon_imageview"
-            app:layout_constraintTop_toTopOf="@id/cocktail_icon_imageview"
+            app:layout_constraintLeft_toRightOf="@id/cocktail_details_icon_imageview"
+            app:layout_constraintTop_toTopOf="@id/cocktail_details_icon_imageview"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="My cocktail title" />
 

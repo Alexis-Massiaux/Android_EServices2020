@@ -1,6 +1,7 @@
 package android.eservices.insidefridge.presentation.cocktaildisplay.search.fragment;
 
 import android.eservices.insidefridge.data.di.FakeDependencyInjection;
+import android.eservices.insidefridge.presentation.cocktaildisplay.fridge.fragment.FridgeFragment;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchContract;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.CocktailSearchPresenter;
 import android.eservices.insidefridge.presentation.cocktaildisplay.search.adapter.CocktailAdapter;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,7 +36,8 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
 
     public static final String TAB_NAME = "Search";
     private View rootView;
-    private Button button;
+    private Button gridListButton;
+    private Button detailsCocktailsButton;
     private SearchView searchView;
     private RecyclerView recyclerView;
     private CocktailSearchContract.Presenter presenter;
@@ -62,6 +65,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setupDetailsButton();
     }
 
     @Override
@@ -69,7 +73,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_search, container, false);
-        button = rootView.findViewById(R.id.button);
+        gridListButton = rootView.findViewById(R.id.button);
 
         return rootView;
     }
@@ -138,7 +142,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        gridListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (layoutManager instanceof GridLayoutManager) {
@@ -149,5 +153,25 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
                 recyclerView.setLayoutManager(layoutManager);
             }
         });
+    }
+
+    private void setupDetailsButton() {
+        View search = getLayoutInflater().inflate(R.layout.item_cocktail, null);
+        detailsCocktailsButton = search.findViewById(R.id.result_button);
+        detailsCocktailsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                System.out.println("TRON clickbuttton");
+                replaceFragment(new FridgeFragment());
+            }
+        });
+    }
+
+    private void replaceFragment(Fragment newFragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
