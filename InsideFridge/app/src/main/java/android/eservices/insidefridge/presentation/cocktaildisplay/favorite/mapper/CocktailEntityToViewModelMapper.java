@@ -9,6 +9,11 @@ import java.util.List;
 
 public class CocktailEntityToViewModelMapper {
 
+    /**
+     * Renvoi un objet CocktailItemViewModel selon un objet CocktailEntity
+     * @param cocktail - le CocktailEntity qui sera transformé
+     * @return - un CocktailItemViewModel
+     */
     private CocktailItemViewModel map(CocktailEntity cocktail) {
         CocktailItemViewModel cocktailItemViewModel = new CocktailItemViewModel();
 
@@ -19,6 +24,11 @@ public class CocktailEntityToViewModelMapper {
         return cocktailItemViewModel;
     }
 
+    /**
+     * Renvoi une liste de CocktailItemViewModel selon une liste de CocktailEntity
+     * @param cocktailEntitiesList - la liste de CocktailEntity qui sera transformé
+     * @return - la liste des CocktailItemViewModel sortant
+     */
     public List<CocktailItemViewModel> map(List<CocktailEntity> cocktailEntitiesList) {
         List<CocktailItemViewModel> result = new ArrayList<>();
 

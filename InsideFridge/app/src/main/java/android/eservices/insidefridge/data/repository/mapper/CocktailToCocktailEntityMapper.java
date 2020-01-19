@@ -6,7 +6,7 @@ import android.eservices.insidefridge.data.entity.CocktailEntity;
 public class CocktailToCocktailEntityMapper {
 
     /**
-     * Renvoi un objet CocktailEntity depuis un un objet Cocktail
+     * Renvoi un objet CocktailEntity depuis un objet Cocktail
      * @param cocktail - le Coktail qui sera transformé
      * @return - un CocktailEntity
      */
