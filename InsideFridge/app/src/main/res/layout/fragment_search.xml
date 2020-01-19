@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.cocktaildisplay.search.fragment.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <androidx.cardview.widget.CardView
         android:id="@+id/search_cardview"
         android:layout_width="match_parent"
@@ -34,6 +32,19 @@
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_cardview" />
+        app:layout_constraintTop_toBottomOf="@+id/search_cardview" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+        android:background="@android:drawable/ic_dialog_dialer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

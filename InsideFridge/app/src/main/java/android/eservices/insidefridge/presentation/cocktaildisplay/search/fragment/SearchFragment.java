@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.eservices.insidefridge.R;
+import android.widget.Button;
 
 import java.util.List;
 import java.util.Timer;
@@ -32,9 +34,11 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
 
     public static final String TAB_NAME = "Search";
     private View rootView;
+    private Button button;
     private SearchView searchView;
     private RecyclerView recyclerView;
     private CocktailSearchContract.Presenter presenter;
+    private RecyclerView.LayoutManager layoutManager;
     private CocktailAdapter cocktailAdapter;
 
     public SearchFragment() {
@@ -65,6 +69,7 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_search, container, false);
+        button = rootView.findViewById(R.id.button);
 
         return rootView;
     }
@@ -130,8 +135,19 @@ public class SearchFragment extends Fragment implements CocktailSearchContract.V
         recyclerView = rootView.findViewById(R.id.recycler_view);
         cocktailAdapter = new CocktailAdapter();
         recyclerView.setAdapter(cocktailAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (layoutManager instanceof GridLayoutManager) {
+                    layoutManager = new LinearLayoutManager(getContext());
+                } else {
+                    layoutManager = new GridLayoutManager(getContext(), 2);
+                }
+                recyclerView.setLayoutManager(layoutManager);
+            }
+        });
     }
-
-
 }
